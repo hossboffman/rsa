@@ -9,8 +9,8 @@
 #set d as the d_0th prime
 
 #while(-)
-	print p, q, d
-	pubpriv p, q, d
+#	print p, q, d
+#	pubpriv p, q, d
 
 
 #MAKING THE ARRAY OF THE FIRST 1000 PRIMES
@@ -25,7 +25,43 @@
 #	for(j=0; j<k; j++)
 #		if(i%array[j] == 0)
 #			i++;
-#			j=0;
+#			j=-1;
 #	array[k] = i;
 #	i++;
 #	k++;
+
+declare -a primes
+primes[0]=2
+p_0=$(($RANDOM % 999))
+q_0=$(($RANDOM % 999))
+while [ $p_0 -eq $q_0 ]
+do q_0=$(($RANDOM % 999))
+done
+if [ $p_0 -gt $q_0 ]; then
+	r=$p_0
+else
+	r=$q_0
+fi
+m=$[1000 - $r]
+L=$(($RANDOM % $m))
+d_0=$[$L+$r]
+
+i=3
+j=0
+k=1
+while [ $k -lt 1000 ]; do
+	for ((j=0; j<k; j++)); do
+		if [ $[$i % primes[j]] -eq 0 ]; then
+			i=$[$i + 1]
+			j=-1
+		fi
+		done
+primes[k]=$i
+i=$[$i + 1]
+k=$[$k + 1]
+done
+
+echo ${primes[999]}
+echo ${primes[6]}
+echo ${primes[5]}
+echo ${primes[1000]}
