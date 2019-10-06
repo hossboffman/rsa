@@ -1,3 +1,5 @@
+/*this is the program that from a public key generates a private key using the method detailed in the rsa paper.*/
+
 #include<stdio.h>
 #include<stdlib.h>
 int main(int argc, char *argv[])
@@ -25,15 +27,15 @@ int main(int argc, char *argv[])
 	b[1]=1;
 	b[2]=-1 * k[2];
 	
-	while(a[i]*phin + b[i]*d != 1)
+	while(a[i]*phin + b[i]*d != 1)		/*deduced this empirically; made the testing script to make sure it actually works*/
 	{
 		a[i+1]=a[i-1] - k[i+1]*a[i];
 		b[i+1]=b[i-1] - k[i+1]*b[i];
 		i++;
 	}
 	long int e = b[i];
-	while(e<0)
-		e+=phin;
-	printf("The test: %ld\n", (e*d)%phin);
+	while(e<0)				/*making the residue positive*/
+		e+=phin;			/*be sure to remove the testing part later*/
+	printf("The test: %ld\n", (e*d)%phin);  /*just testing; it should print the number 1*/
 	return 0;
 }
