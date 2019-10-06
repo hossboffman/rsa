@@ -1,8 +1,8 @@
 #!/bin/bash
 
 #pick p_0, a pseudo-random integer from 0 to 998
-#pick q_0, a pseudo-random integer from p_0+1 to 999
-#pick d_0, a pseudo-random integer from q_0+1 to 1000
+#pick q_0, a pseudo-random integer from 0 to 998
+#pick d_0, a pseudo-random integer above p_0 and q_0 and below 1000
 
 #set p as the p_0th prime
 #set q as the q_0th prime
@@ -30,21 +30,9 @@
 #	i++;
 #	k++;
 
+#making and initializing prime array
 declare -a primes
 primes[0]=2
-p_0=$(($RANDOM % 999))
-q_0=$(($RANDOM % 999))
-while [ $p_0 -eq $q_0 ]
-do q_0=$(($RANDOM % 999))
-done
-if [ $p_0 -gt $q_0 ]; then
-	r=$p_0
-else
-	r=$q_0
-fi
-m=$[1000 - $r]
-L=$(($RANDOM % $m))
-d_0=$[$L+$r]
 
 i=3
 j=0
@@ -61,7 +49,23 @@ i=$[$i + 1]
 k=$[$k + 1]
 done
 
-echo ${primes[999]}
-echo ${primes[6]}
-echo ${primes[5]}
-echo ${primes[1000]}
+for u in {0..99}
+do
+
+	#picking indices
+	p_0=$(($RANDOM % 999))
+	q_0=$(($RANDOM % 999))
+	while [ $p_0 -eq $q_0 ]
+	do q_0=$(($RANDOM % 999))
+	done
+	if [ $p_0 -gt $q_0 ]; then
+		r=$p_0
+	else
+		r=$q_0
+	fi
+	m=$[1000 - $r]
+	L=$(($RANDOM % $m))
+	d_0=$[$L+$r]
+
+	./pubpriv.exe "${primes[p_0]}" "${primes[q_0]}" "${primes[d_0]}"
+done

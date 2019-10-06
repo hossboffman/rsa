@@ -2,13 +2,13 @@
 #include<stdlib.h>
 int main(int argc, char *argv[])
 {
-	int x[100], k[100], a[100], b[100];
-	int p, q, d;
+	long int x[100], k[100], a[100], b[100];
+	long int p, q, d;
 	p=atoi(argv[1]);
 	q=atoi(argv[2]);
 	d=atoi(argv[3]);
 	x[0]=(p-1)*(q-1);
-	int phin=x[0];
+	long int phin=x[0];
 	x[1]=d;
 	
 	int i=1;
@@ -31,9 +31,9 @@ int main(int argc, char *argv[])
 		b[i+1]=b[i-1] - k[i+1]*b[i];
 		i++;
 	}
-	int e = b[i];
+	long int e = b[i];
 	while(e<0)
 		e+=phin;
-	printf("The test: %d\n", (e*d)%phin);
+	printf("The test: %ld\n", (e*d)%phin);
 	return 0;
 }
