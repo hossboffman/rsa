@@ -1,5 +1,5 @@
 /*this is the program that from a public key generates a private key using the method detailed in the rsa paper.*/
-
+/*eventually it'll need to use a large number library*/
 #include<stdio.h>
 #include<stdlib.h>
 int main(int argc, char *argv[])
