@@ -1,0 +1,29 @@
+GMP large integer functions that will be needed for the transition to calculations with larger number
+
+void mpz_inits(mpz_t, mpz_t, ...)
+  initializes all arguments and sets them to 0
+  
+int mpz_init_set_str(mpz_t a, const char *str, int base)
+  initializes multiple precision integer a as the number specified in str in base base. returns 0 if that number is a proper \
+  base base number; returns -1 otherwise
+  
+void mpz_clears(mpz_t, mpz_t, ...)
+  clears all input values. use this function on all mpz_t variables at the end of the code.
+  
+int mpz_probab_prime_p(mpz_t a, int reps)
+  returns 2 if a is definitely prime, 1 if a is a probable prime, or 0 if a is composite. reps determines the \
+  number of times a probablistic test will be run; make reps over 90.
+  
+int mpz_invert (mpz_t rop, const mpz_t op1, const mpz_t op2)
+  computes inverse of op1 mod op2 and assigns rop thereto. returns 0 and leaves rop undefined if such an inverse \
+  doesn't exist. is this function superior to the one in pubpriv? test that with large integers.
+  
+void mpz_powm_sec (mpz_t rop, const mpz_t base, const mpz_t exp, const mpz_t mod)
+  set rop to the residue in mod of base^exp. exp must be positive and mod must be odd.
+  
+void mpz_urandomm (mpz_t rop, gmp_randstate_t state, const mpz_t n)
+  generates random integral number inclusively between 0 and 2^(n-1). the state variable must be initialized\
+  if this function is to work.
+  
+void gmp_randinit_mt (gmp_randstate_t state)
+  initializes state variable for a mersenne twister.
