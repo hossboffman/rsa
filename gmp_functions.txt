@@ -27,3 +27,9 @@ void mpz_urandomm (mpz_t rop, gmp_randstate_t state, const mpz_t n)
   
 void gmp_randinit_mt (gmp_randstate_t state)
   initializes state variable for a mersenne twister.
+
+void mpz_mul (mpz_t rop, const mpz_t op1, const mpz_t op2)
+  rop=op1*op2
+  
+void mpz_add (mpz_t rop, const mpz_t op1, const mpz_t op2)
+  rop=op1+op2
