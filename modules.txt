@@ -1,0 +1,24 @@
+FEATURES OF THE PROGRAM:
+
+ 1. Key pair generation
+ 2. Encrypting files
+ 3. Decrypting files
+ 
+ KEY PAIR GENERATION STEPS:
+ 
+ 1. Find an encryption key
+ 2. Use that to compute a decryption key
+ 3. Save encryption key on hard drive
+ 4. Burn decryption key to flash drive
+ 
+ FILE ENCRYPTION STEPS:
+ 
+ 1. Select file to be encrypted
+ 2. Select encryption key to be used
+ 3. Encrypt the file; save in the same location as the old file
+ 
+ FILE DECRYPTION STEPS:
+ 
+ 1. Select file to decrypt
+ 2. Find decryption key on USB stick
+ 3. Decrypt file; save in same location
