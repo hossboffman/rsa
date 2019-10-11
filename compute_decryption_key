@@ -1,0 +1,4 @@
+/*OUTLINE OF FUNCTION*/
+/*receive p, q, and e from the encryption key maker*/
+/*compute d, the decryption key, using the method in pubpriv.c*/
+/*pass d and pq to the decryption key burner*/
